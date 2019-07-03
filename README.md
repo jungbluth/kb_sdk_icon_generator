@@ -13,4 +13,6 @@ kb_sdk_icon_generator is a small utility to generate icons for Apps - works with
 
 
 ## Demo
-<img align="center" src="https://github.com/jungbluth/kb_sdk_icon_generator/blob/master/DEMO__kb_sdk_icon_generator.gif" width="800"/>
+<p align="center">
+  <img src="https://github.com/jungbluth/kb_sdk_icon_generator/blob/master/DEMO__kb_sdk_icon_generator.gif" width="800"/>
+</p>
