@@ -14,7 +14,7 @@ function banner(){
 
 banner | lolcat
 
-printf "\nKBase App Icon Generator - v1.0 - author: Sean Jungbluth\n"
+printf "\nKBase SDK App Icon Generator - v1.0 - author: Sean Jungbluth (jungbluth.sean@gmail.com)\n"
 
 printf "\nEnter text to show on the icon: "
 read icon_text
