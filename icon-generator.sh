@@ -19,6 +19,11 @@ printf "\nKBase App Icon Generator - v1.0 - author: Sean Jungbluth\n"
 printf "\nEnter text to show on the icon: "
 read icon_text
 
+if [ -z "${icon_text}" ]
+  then
+    echo "Could not detect icon text entry - using 'TEST' as input text"
+fi
+
 printf "\nEnter color for the icon (choices: blue, pink, purple, green, yellow, red, light-blue, aqua): "
 read icon_color
 
@@ -53,7 +58,7 @@ for pointsize in {48,54,60,62,64,66,68,70,72,74,76,78,80}; do
        -draw 'fill black circle 40,40 40,0' \
        -background ${icon_color_input}  -alpha shape \
        \( +clone -flip \) \( +clone -flop \) \( +clone -flip \) \
-     \) -flatten  $(echo "${icon_text}" | tr '[:upper:]' '[:lower:]')_${pointsize}pt-$(echo "${icon_color}" | tr '[:upper:]' '[:lower:]').png
+     \) -flatten  /tmp/$(echo "${icon_text}" | tr '[:upper:]' '[:lower:]')_${pointsize}pt-$(echo "${icon_color}" | tr '[:upper:]' '[:lower:]').png
 done && rm temp.png
 
 printf "\nSuccess! Use the icon with text that best uses the image space and remove the others."
