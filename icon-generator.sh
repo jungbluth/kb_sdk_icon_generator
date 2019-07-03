@@ -11,12 +11,14 @@ function banner(){
   printf "                                                       |_|   |_|                                                                         \n"
 }
 
-
-banner | lolcat
+# if length of banner greater than window size then don't show it
+if [[ "$(echo $COLUMNS)" -gt 136 ]]; then 
+  banner | lolcat
+fi
 
 printf "\nKBase SDK App Icon Generator - v1.0 - author: Sean Jungbluth (jungbluth.sean@gmail.com)\n"
 
-printf "\nEnter text to show on the icon: "
+printf "\nEnter text to show on the icon (case-sensitive): "
 read icon_text
 
 if [ -z "${icon_text}" ]
@@ -24,14 +26,26 @@ if [ -z "${icon_text}" ]
     echo "Could not detect icon text entry - using 'TEST' as input text"
 fi
 
-printf "\nEnter color for the icon (choices: blue, pink, purple, green, yellow, red, teal, aqua): "
+printf "\nColor the icon (choices: blue, pink, purple, green, yellow, red, orange, teal, aqua)\n"
+printf "\nRecommendations, based on category:"
+printf "\n  -Read Processing: pink"
+printf "\n  -Genome Assembly: blue"
+printf "\n  -Genome Annotation: red"
+printf "\n  -Sequence Analysis: teal"
+printf "\n  -Comparative Genomics: purple"
+printf "\n  -Metabolic Modeling: aqua"
+printf "\n  -Expression/RNA-Related: yellow"
+printf "\n  -Metagenome-Related: green"
+printf "\n  -Utilities: orange"
+
+printf "\n\nChoose a color: "
 read icon_color
 
 if [ -z "${icon_color}" ]
   then
-    echo "Could not detect input color - defaulting to blue."
-    icon_color = "blue"
-    icon_color_input="#0A71A7"
+    echo "Could not detect input color - defaulting to orange."
+    icon_color = "orange"
+    icon_color_input = "#ED8C3C"
 fi
 
 if [ ${icon_color} = "pink" ]; then
@@ -46,6 +60,8 @@ elif [ ${icon_color} = "yellow" ]; then
   icon_color_input="#E6B74D"
 elif [ ${icon_color} = "red" ]; then
   icon_color_input="#9C1D22"
+elif [ ${icon_color} = "orange" ]; then
+  icon_color_input="#ED8C3C"
 elif [ ${icon_color} = "teal" ]; then
   icon_color_input="#74B8DC"
 elif [ ${icon_color} = "aqua" ]; then
@@ -69,6 +85,6 @@ convert temp.png \
      \( +clone -flip \) \( +clone -flop \) \( +clone -flip \) \
    \) -flatten  /tmp/$(echo "${icon_text}" | tr '[:upper:]' '[:lower:]')_${icon_text_size}pt-$(echo "${icon_color}" | tr '[:upper:]' '[:lower:]').png && rm temp.png
 
-printf "\nSuccess! Ideally the icon text should be uncropped and use most of the icon space.\n"
+printf "\nSuccess! Ideally the icon text should be uncropped and use most of the background space.\n"
 
-printf "\nExiting.\n"
+printf "\nExiting.\n\n"
