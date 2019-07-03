@@ -5,7 +5,7 @@ utility to generate icons for Apps - work with KBase SDK
 * Docker
 
 ## Installation
-* Run docker pull jungbluth...
+* Run ```docker pull jungbluth/kb_sdk_icon_generator:latest```
 
 For convenience, alias the Docker command
 
