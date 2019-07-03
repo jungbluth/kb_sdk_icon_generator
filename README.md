@@ -12,3 +12,5 @@ utility to generate icons for Apps - work with KBase SDK
 * Type ```kb_sdk_icon_gen``` and the utility will run in the current working directory. Importantly, Docker needs to be able to mount the local directory, so choose a location where Docker can operate (e.g. ~/Desktop).
 
 ![](DEMO__kb_sdk_icon_generator.gif | width=800)
+
+<img src="https://github.com/jungbluth/kb_sdk_icon_generator/blob/master/DEMO__kb_sdk_icon_generator.gif" width="800" height="271" />
