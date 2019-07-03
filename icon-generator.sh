@@ -27,6 +27,12 @@ fi
 printf "\nEnter color for the icon (choices: blue, pink, purple, green, yellow, red, teal, aqua): "
 read icon_color
 
+if [ -z "${icon_color}" ]
+  then
+    echo "Could not detect input color - defaulting to blue."
+    icon_color = "blue"
+    icon_color_input="#0A71A7"
+fi
 
 if [ ${icon_color} = "pink" ]; then
   icon_color_input="#D16197"
@@ -44,9 +50,6 @@ elif [ ${icon_color} = "teal" ]; then
   icon_color_input="#74B8DC"
 elif [ ${icon_color} = "aqua" ]; then
   icon_color_input="#23877D"
-else
-  echo "Could not detect input color - defaulting to blue."
-  icon_color_input="#0A71A7"
 fi
 
 printf "\nEnter font text size for font (default: 72): "
@@ -55,7 +58,7 @@ read icon_text_size
 
 if [ -z "${icon_text_size}" ]
   then
-    echo "Could not detect icon text size entry - using 72pt."
+    echo "Could not detect icon text size entry - using 72."
 fi
 
 convert -size 200x200 -pointsize ${icon_text_size} -gravity center -background ${icon_color_input} -font FuturaBTMediumCondensed -fill white label:"${icon_text}" temp.png
